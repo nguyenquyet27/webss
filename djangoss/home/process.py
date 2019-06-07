@@ -13,9 +13,8 @@ def process_search(p):
     for i in p:
         x = x + i
     #x = "iPhone Xs Max";
-
     try:
-        with open('home/datas.json') as json_dataset:
+        with open('D:\Github\webss\djangoss\home\datas.json') as json_dataset:
             dataset = json.load(json_dataset)
     except  FileNotFoundError:
         json_data = {"test":[]} 
@@ -36,7 +35,7 @@ def process_search(p):
     x_ = tokenizing.get_terms(x,lemmatize=False, stemming=False)
     bag = Counter(x_)
     corpus.append(bag)
-
+    n = len(x_)
     #compute tf-idf
     tf = weight.compute_tf(corpus)
     idf = weight.compute_idf(corpus)
@@ -55,15 +54,16 @@ def process_search(p):
         dot = np.dot(a, b)
         norma = np.linalg.norm(a)
         cos = dot / (norma * normb)
-        Get_data.append({
-            "cost" : cos,
-            "id"            :  data[i]["id"],
-            "ProductName"   :  data[i]["ProductName"],
-            "Price"         :  data[i]["Price"],
-            "Company"       :  data[i]["Company"],
-            "Distributor"   :  data[i]["Distributor"],
-            "image"         :  data[i]["image"]
-        })
+        if ((n == 1 and cos > 0.2) or (n > 1 and cos > 0.5)) :
+            Get_data.append({
+                "cost" : cos,
+                "id"            :  data[i]["id"],
+                "ProductName"   :  data[i]["ProductName"],
+                "Price"         :  data[i]["Price"],
+                "Company"       :  data[i]["Company"],
+                "Distributor"   :  data[i]["Distributor"],
+                "image"         :  data[i]["image"]
+            })
     Get_data.sort(key=sort_by_me , reverse = True)
     number = 10; 
     result = {"item":[]}
