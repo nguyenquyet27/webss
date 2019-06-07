@@ -15,5 +15,5 @@ def process_data(request):
     kq = process.process_search(x)
     return render(request,'pages/pages1.html',kq) 
 
-def test(request):
+def test(request, id):
     return render(request,'pages/pages2.html') 
