@@ -13,8 +13,9 @@ def process_search(p):
     for i in p:
         x = x + i
     #x = "iPhone Xs Max";
+
     try:
-        with open('/home/sen/Desktop/hoc tap/webss/djangoss/home/datas1.json') as json_dataset:
+        with open('home/datas1.json') as json_dataset:
             dataset = json.load(json_dataset)
     except  FileNotFoundError:
         json_data = {"test":[]} 
