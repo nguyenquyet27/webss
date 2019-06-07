@@ -9,12 +9,12 @@ def sort_by_me(a):
     return a["cost"]
 
 def process_search(p):
-    x = "";
+    x = ""
     for i in p:
         x = x + i
     #x = "iPhone Xs Max";
     try:
-        with open('/home/sen/Desktop/hoc tap/webss/djangoss/home/datas1.json') as json_dataset:
+        with open('D:\Github\webss\djangoss\home\datas.json') as json_dataset:
             dataset = json.load(json_dataset)
     except  FileNotFoundError:
         json_data = {"test":[]} 
@@ -63,7 +63,7 @@ def process_search(p):
             "image"         :  data[i]["image"]
         })
     Get_data.sort(key=sort_by_me , reverse = True)
-    number = 2; 
+    number = 10; 
     result = {"item":[]}
     for i in range(0,number):
         result["item"].append(Get_data[i])
