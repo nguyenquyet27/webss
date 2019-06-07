@@ -57,6 +57,7 @@ def process_search(p):
         cos = dot / (norma * normb)
         Get_data.append({
             "cost" : cos,
+            "id"            :  data[i]["id"],
             "ProductName"   :  data[i]["ProductName"],
             "Price"         :  data[i]["Price"],
             "Company"       :  data[i]["Company"],
