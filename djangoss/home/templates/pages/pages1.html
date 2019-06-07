@@ -22,10 +22,9 @@
         </div>
       </div>
   <br>
-
-{% for detail in item %}
       <div class="container">
           <div class="row">
+              {% for detail in item %}
               <div class="col-md-3 mb-4" id="ttsp">
                       <div class="card shadow-sm">
                               <a href="./{{2}}" target="_blank"> 
@@ -43,8 +42,8 @@
                       </div>
                       </div>
               </div>
+              {% endfor %}
           <!-- @endforeach -->
         </div>
     </div>
-{% endfor %}
 {% endblock %}
