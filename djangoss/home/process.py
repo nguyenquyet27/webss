@@ -9,7 +9,7 @@ def sort_by_me(a):
     return a["cost"]
 
 def process_search(p):
-    x = "";
+    x = ""
     for i in p:
         x = x + i
     #x = "iPhone Xs Max";
@@ -64,7 +64,7 @@ def process_search(p):
             "image"         :  data[i]["image"]
         })
     Get_data.sort(key=sort_by_me , reverse = True)
-    number = 2; 
+    number = 10; 
     result = {"item":[]}
     for i in range(0,number):
         result["item"].append(Get_data[i])

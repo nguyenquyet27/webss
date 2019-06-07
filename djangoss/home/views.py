@@ -9,9 +9,11 @@ def index(request):
         'sanpham' : 'anc'
     }
     return render(request, 'pages/pages1.html',var)
-def page2(request, id):
-    return render(request, 'pages/pages2.html')
+
 def process_data(request):
-    x = request.POST.get("chuoi",False)
+    x = request.POST.get("chuoi")
     kq = process.process_search(x)
-    return render(request,'pages/pages2.html',kq) 
+    return render(request,'pages/pages1.html',kq) 
+
+def test(request):
+    return render(request,'pages/pages2.html') 

@@ -1,10 +1,11 @@
 {% extends "pages/base.html" %}
 {% load static %}
-{% block title %}Page1{% endblock %}
+{% block title %}Home{% endblock %}
 {% block style %}
 <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" />
 {% endblock %}
 {% block content %}
+
 <div class="container">
         <div class="d-flex justify-content-center">
           <form action = "detail" method = "post">
@@ -21,21 +22,23 @@
         </div>
       </div>
   <br>
+
+{% for detail in item %}
       <div class="container">
           <div class="row">
               <div class="col-md-3 mb-4" id="ttsp">
                       <div class="card shadow-sm">
                               <a href="./{{2}}" target="_blank"> 
-                                      <img width="100%" height="250" src="https://cdn.tgdd.vn/Products/Images/42/190322/iphone-xs-max-256gb-white-600x600.jpg" alt="Tên sản phẩm">
+                                      <img width="100%" height="250" src="{{detail.image}}" alt="Tên sản phẩm">
                               </a>
                       <br>
                       <div class="container">
                           <a href="./{{2}}" class="card-link text-body">
-                              <h5 data-toggle="tooltip" data-placement="bottom" [title]=data.ProductName class="card-title text-truncate">Tên sản phẩm</h5>
+                              <h5 data-toggle="tooltip" data-placement="bottom" [title]=data.ProductName class="card-title text-truncate">{{detail.ProductName}}</h5>
                           </a>
                           <hr>
                           <h5 style="color:#16a085;" class="text-right">
-                            Giá sản phẩm
+                            {{detail.Price}}
                           </h5>
                       </div>
                       </div>
@@ -43,5 +46,5 @@
           <!-- @endforeach -->
         </div>
     </div>
-
+{% endfor %}
 {% endblock %}
