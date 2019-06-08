@@ -14,7 +14,7 @@ def process_search(p):
         x = x + i
     #x = "iPhone Xs Max";
     try:
-        with open('home\datas.json') as json_dataset:
+        with open('home/datas.json') as json_dataset:
             dataset = json.load(json_dataset)
     except  FileNotFoundError:
         json_data = {"test":[]} 
@@ -49,7 +49,9 @@ def process_search(p):
     normb = np.linalg.norm(b)
     ValueOfItem = []
     Get_data = []
+    dem = 0
     for i in range(0,k):
+        dem = dem + 1
         a = np.array(represent_tfidf[i])
         dot = np.dot(a, b)
         norma = np.linalg.norm(a)
@@ -58,7 +60,7 @@ def process_search(p):
             
             Get_data.append({
                 "cost" : cos,
-                "id"            :  data[i]["id"],
+                "id"            :  dem,
                 "ProductName"   :  data[i]["ProductName"],
                 "Price"         :  data[i]["Price"],
                 "Company"       :  data[i]["Company"],
@@ -75,12 +77,14 @@ def process_search(p):
 
 def find_id(id_product):
     try:
-        with open('home\datas.json') as json_dataset:
+        with open('/home/sen/Desktop/hoc tap/webss1/djangoss/home/datas.json') as json_dataset:
             dataset = json.load(json_dataset)
     except  FileNotFoundError:
-        json_data = {"test":[]} 
+        dataset = {"test":[]} 
     data=[]
+    dem = 0 
     for i in dataset:
+        dataset[i]["id"] = dem + 1
         data.append(dataset[i])
 
     for i in range(0,len(data)):
