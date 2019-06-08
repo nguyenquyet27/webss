@@ -90,7 +90,7 @@ def find_id(id_product):
     for i in range(0,len(data)):
         if i+1 == id_product:
             return {
-                "id"            :  data[i]["id"],
+                "id"            :  id_product,
                 "ProductName"   :  data[i]["ProductName"],
                 "Price"         :  data[i]["Price"],
                 "Company"       :  data[i]["Company"],
