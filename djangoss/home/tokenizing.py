@@ -3,7 +3,6 @@ from nltk.corpus import stopwords
 import re
 import contractions
 import unicodedata
-import inflect
 import nltk
 nltk.download('punkt')
 nltk.download('stopwords')
@@ -36,23 +35,6 @@ def remove_non_ascii(words):
         new_word = unicodedata.normalize('NFKD', word).encode(
             'ascii', 'ignore').decode('utf-8', 'ignore')
         new_words.append(new_word)
-    return new_words
-
-
-"""
-    replace all interger occurrences in list of tokenized words with textual representation
-"""
-
-
-def replace_numbers(words):
-    p = inflect.engine()
-    new_words = []
-    for word in words:
-        if word.isdigit():
-            new_word = p.number_to_words(word)
-            new_words.append(new_word)
-        else:
-            new_words.append(word)
     return new_words
 
 
@@ -111,7 +93,7 @@ def preprocessing(terms, remove_non_ACSII=True, replace_num=True, lemmatize=True
     return terms
 
 
-def get_terms(text, expand_contraction=True, remove_punc=True, remove_digit=False, remove_non_ACSII=True, replace_num=True, lemmatize=True, stemming=True):
+def get_terms(text, expand_contraction=True, remove_punc=True, remove_digit=False, remove_non_ACSII=True, replace_num=False, lemmatize=True, stemming=True):
     """ convert all characters to lowercase in string of text"""
 
     text = text.lower()
