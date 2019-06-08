@@ -1,6 +1,6 @@
 {% extends "pages/base.html" %}
 {% load static %}
-{% block title %}Home{% endblock %}
+{% block title %}HOME{% endblock %}
 {% block style %}
 <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" />
 {% endblock %}
@@ -27,12 +27,12 @@
               {% for detail in item %}
               <div class="col-md-3 mb-4" id="ttsp">
                       <div class="card shadow-sm">
-                              <a href="./{{detail.id}}" target="_blank"> 
+                              <a href="{{detail.id}}" target="_blank"> 
                                       <img width="100%" height="250" src="{{detail.image}}" alt="Tên sản phẩm">
                               </a>
                       <br>
                       <div class="container">
-                          <a href="./{{detail.id}}" class="card-link text-body">
+                          <a href="{{detail.id}}" class="card-link text-body">
                               <h5 data-toggle="tooltip" data-placement="bottom" [title]=data.ProductName class="card-title text-truncate">{{detail.ProductName}}</h5>
                           </a>
                           <hr>
