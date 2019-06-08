@@ -7,12 +7,33 @@ import json
 from collections import Counter
 def sort_by_me(a):
     return a["cost"]
+def prepare():
+    try:
+        with open('home/datas.json') as json_dataset:
+            dataset = json.load(json_dataset)
+    except  FileNotFoundError:
+        json_data = {"test":[]} 
+    data=[]
+    for i in dataset:
+        data.append(dataset[i])
+ 
+    ProductName = list()
+    for i in data:
+        ProductName.append(i["ProductName"])
+    corpus = list()
+    for name in ProductName:
+        terms = tokenizing.get_terms(name,lemmatize=False, stemming=False)
+        bag_of_words = Counter(terms)
+        corpus.append(bag_of_words)
+    return {
+        "corpus": corpus
+    }
+    
 
 def process_search(p):
     x = ""
     for i in p:
         x = x + i
-    #x = "iPhone Xs Max";
     try:
         with open('home/datas.json') as json_dataset:
             dataset = json.load(json_dataset)
