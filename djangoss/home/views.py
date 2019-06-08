@@ -11,6 +11,6 @@ def process_data(request):
     kq = process.process_search(x)
     return render(request,'pages/pages1.html',kq) 
 
-def test(request, id):
-    kq = process.find_id(id)
+def test(request, id_product):
+    kq = process.find_id(id_product)
     return render(request,'pages/pages2.html',kq) 
