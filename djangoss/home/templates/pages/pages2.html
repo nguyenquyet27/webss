@@ -3,37 +3,33 @@
 {% block title %}Product{% endblock %}
 
 {% block content %}
-<h1>{{research}}</h1>
-{% for detail in item %}
-
 <div class="container mt-5">  
         <div class="row">
           <div class="col-md-6 d-flex">
-            <img width="100%" src={{detail.image}}>
+            <img width="100%" src={{image}}>
           </div>
           <div class="col-md-6">
               <table class="table">
                   <tbody>
                     <tr>
                       <th scope="row">Tên sản phẩm</th>
-                      <td>{{detail.ProductName}}</td>
+                      <td>{{image}}</td>
                     </tr>
                     <tr>
                       <th scope="row">Nhà sản xuất</th>
-                      <td>{{detail.Company}}</td>
+                      <td>{{Company}}</td>
                     </tr>
                     <tr>
                       <th scope="row">Nhà phân phối</th>
-                      <td>{{detail.Distributor}}</td>
+                      <td>{{Distributor}}</td>
                     </tr>
                     <tr>
                       <th scope="row">Giá sản phẩm</th>
-                      <td class="text-primary">{{detail.Price}}</td>
+                      <td class="text-primary">{{Price}}</td>
                       </tr>
                   </tbody>
                 </table>
           </div>
         </div>
     </div>
-{% endfor %}
 {% endblock %}

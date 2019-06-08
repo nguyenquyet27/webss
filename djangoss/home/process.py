@@ -55,6 +55,7 @@ def process_search(p):
         norma = np.linalg.norm(a)
         cos = dot / (norma * normb)
         if ((n == 1 and cos > 0) or (n > 1 and cos > 0.3)) :
+            
             Get_data.append({
                 "cost" : cos,
                 "id"            :  data[i]["id"],
@@ -71,3 +72,24 @@ def process_search(p):
     for i in range(0,min(number,y)):
         result["item"].append(Get_data[i])
     return result
+
+def find_id(id_product):
+    try:
+        with open('home\datas.json') as json_dataset:
+            dataset = json.load(json_dataset)
+    except  FileNotFoundError:
+        json_data = {"test":[]} 
+    data=[]
+    for i in dataset:
+        data.append(dataset[i])
+
+    for i in range(0,len(data)):
+        if i+1 == id_product:
+            return {
+                "id"            :  data[i]["id"],
+                "ProductName"   :  data[i]["ProductName"],
+                "Price"         :  data[i]["Price"],
+                "Company"       :  data[i]["Company"],
+                "Distributor"   :  data[i]["Distributor"],
+                "image"         :  data[i]["image"]
+        }

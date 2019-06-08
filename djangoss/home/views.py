@@ -4,11 +4,7 @@ from . import process
 
 # Create your views here.
 def index(request):
-    
-    var = {
-        'sanpham' : 'anc'
-    }
-    return render(request, 'pages/pages1.html',var)
+    return render(request, 'pages/pages1.html')
 
 def process_data(request):
     x = request.POST.get("chuoi")
@@ -16,4 +12,5 @@ def process_data(request):
     return render(request,'pages/pages1.html',kq) 
 
 def test(request, id):
-    return render(request,'pages/pages2.html') 
+    kq = process.find_id(id)
+    return render(request,'pages/pages2.html',kq) 

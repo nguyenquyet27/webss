@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'nqbspsu0ix_@8%3r5!z9qun!+@l=5@@%e#l&g66&x3f_3&7o@4'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = []
 
 STATICFILES_DIRS = [
     "/djangoss/djangoss/home/static"
