@@ -54,7 +54,7 @@ def process_search(p):
         dot = np.dot(a, b)
         norma = np.linalg.norm(a)
         cos = dot / (norma * normb)
-        if ((n == 1 and cos > 0.2) or (n > 1 and cos > 0.5)) :
+        if ((n == 1 and cos > 0) or (n > 1 and cos > 0.3)) :
             Get_data.append({
                 "cost" : cos,
                 "id"            :  data[i]["id"],
@@ -65,8 +65,9 @@ def process_search(p):
                 "image"         :  data[i]["image"]
             })
     Get_data.sort(key=sort_by_me , reverse = True)
-    number = 10; 
+    number = 10
+    y = len(Get_data) 
     result = {"item":[]}
-    for i in range(0,number):
+    for i in range(0,min(number,y)):
         result["item"].append(Get_data[i])
     return result
