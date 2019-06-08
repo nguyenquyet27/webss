@@ -77,7 +77,7 @@ def process_search(p):
 
 def find_id(id_product):
     try:
-        with open('/home/sen/Desktop/hoc tap/webss1/djangoss/home/datas.json') as json_dataset:
+        with open('home/datas.json') as json_dataset:
             dataset = json.load(json_dataset)
     except  FileNotFoundError:
         dataset = {"test":[]} 
