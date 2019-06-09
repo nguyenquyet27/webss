@@ -19,8 +19,7 @@
         border: 0;
         outline: 0;
         background: none;
-        width: 450px;
-        padding: 0 10px;
+        width: 0;
         line-height: 40px;
         transition: width 0.4s linear;
         }

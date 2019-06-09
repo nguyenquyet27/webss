@@ -90,9 +90,9 @@ def process_search(p):
     normb = np.linalg.norm(b)
     ValueOfItem = []
     Get_data = []
-    dem = 0
+    #dem = 0
     for i in range(0, k):
-        dem = dem + 1
+        #dem = dem + 1
         a = np.array(represent_tfidf[i])
         dot = np.dot(a, b)
         norma = np.linalg.norm(a)
@@ -101,12 +101,13 @@ def process_search(p):
 
             Get_data.append({
                 "cost": cos,
-                "id":  dem,
+                "id":  data[i]["id"],
                 "ProductName":  data[i]["ProductName"],
                 "Price":  data[i]["Price"],
                 "Company":  data[i]["Company"],
                 "Distributor":  data[i]["Distributor"],
-                "image":  data[i]["image"]
+                "image":  data[i]["image"],
+                "link": data[i]["link"]
             })
     Get_data.sort(key=sort_by_me, reverse=True)
     number = 10
@@ -137,5 +138,6 @@ def find_id(id_product):
                 "Price":  data[i]["Price"],
                 "Company":  data[i]["Company"],
                 "Distributor":  data[i]["Distributor"],
-                "image":  data[i]["image"]
+                "image":  data[i]["image"],
+                "link": data[i]["link"]
             }
