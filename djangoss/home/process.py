@@ -7,7 +7,8 @@ from collections import Counter
 
 def sort_by_me(a):
     return a["cost"]
-
+def sort_price(b):
+    return b["Price"]
 
 def prepare():
     try:
@@ -109,12 +110,14 @@ def process_search(p):
                 "image":  data[i]["image"],
                 "link": data[i]["link"]
             })
+    Get_data.sort(key=sort_price, reverse=False)
     Get_data.sort(key=sort_by_me, reverse=True)
     number = 10
     y = len(Get_data)
     result = {"item": []}
     for i in range(0, min(number, y)):
         result["item"].append(Get_data[i])
+    result["item"].sort(key=sort_price, reverse=False)
     return result
 
 
