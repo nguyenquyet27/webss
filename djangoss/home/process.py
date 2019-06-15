@@ -8,7 +8,7 @@ from collections import Counter
 def sort_by_me(a):
     return a["cost"]
 def sort_price(b):
-    return b["Price"]
+    return b["Price1"]
 
 def prepare():
     try:
@@ -39,7 +39,15 @@ def prepare():
         "corpus": corpus
     }
 
-
+def chuyen(st):
+    xnew = st.split()[0]
+    if (xnew == 'Unknow'):
+        return 0
+    x = ""
+    for i in range(0,len(xnew)):
+        if xnew[i] !='.':
+            x =x +  xnew[i]
+    return int(x)
 def process_search(p):
     query = ""
     for i in p:
@@ -92,24 +100,27 @@ def process_search(p):
     ValueOfItem = []
     Get_data = []
     #dem = 0
+   
+                
     for i in range(0, k):
         #dem = dem + 1
         a = np.array(represent_tfidf[i])
         dot = np.dot(a, b)
         norma = np.linalg.norm(a)
-        cos = dot / (norma * normb)
-        if ((query_len == 1 and cos > 0) or (query_len > 1 and cos > 0.3)):
-
-            Get_data.append({
-                "cost": cos,
-                "id":  data[i]["id"],
-                "ProductName":  data[i]["ProductName"],
-                "Price":  data[i]["Price"],
-                "Company":  data[i]["Company"],
-                "Distributor":  data[i]["Distributor"],
-                "image":  data[i]["image"],
-                "link": data[i]["link"]
-            })
+        if (norma != 0):
+            cos = dot / (norma * normb)
+            if ((query_len == 1 and cos > 0) or (query_len > 1 and cos > 0.3)):
+                Get_data.append({
+                    "cost": cos,
+                    "id":  data[i]["id"],
+                    "ProductName":  data[i]["ProductName"],
+                    "Price1":  chuyen(data[i]["Price"]),
+                    "Price" : data[i]["Price"],
+                    "Company":  data[i]["Company"],
+                    "Distributor":  data[i]["Distributor"],
+                    "image":  data[i]["image"],
+                    "link": data[i]["link"]
+                })
     Get_data.sort(key=sort_price, reverse=False)
     Get_data.sort(key=sort_by_me, reverse=True)
     number = 10
