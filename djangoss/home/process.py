@@ -10,35 +10,6 @@ def sort_by_me(a):
 def sort_price(b):
     return b["Price1"]
 
-def prepare():
-    try:
-        with open('home/datas.json') as json_dataset:
-            dataset = json.load(json_dataset)
-    except FileNotFoundError:
-        json_data = {"test": []}
-    
-    data = []
-    for i in dataset:
-        data.append(dataset[i])
-
-    ProductName = list()
-    for i in data:
-        ProductName.append(i["ProductName"])
-
-    corpus = list()
-    for name in ProductName:
-        terms = tokenizing.get_terms(name, lemmatize=False, stemming=False)
-        bow = Counter(terms)
-        corpus.append(bow)
-
-    tf = weight.compute_tf(corpus)
-    idf = weight.compute_idf(corpus)
-    # return tf and idf
-
-    return {
-        "corpus": corpus
-    }
-
 def chuyen(st):
     xnew = st.split()[0]
     if (xnew == 'Unknow'):
@@ -48,6 +19,7 @@ def chuyen(st):
         if xnew[i] !='.':
             x =x +  xnew[i]
     return int(x)
+
 def process_search(p):
     query = ""
     for i in p:
@@ -57,7 +29,6 @@ def process_search(p):
             dataset = json.load(json_dataset)
     except FileNotFoundError:
         json_data = {"test": []}
-
     data = []
     for i in dataset:
         data.append(dataset[i])
@@ -75,9 +46,8 @@ def process_search(p):
 
     # compute tf, idf of data
     tf = weight.compute_tf(corpus)
-    idf = weight.compute_idf(corpus)
-     
-    # delete code from line 49 to 70
+    idf = weight.compute_idf(corpus) 
+
 
     # handling query
     query_ = tokenizing.get_terms(query, lemmatize=False, stemming=False)
@@ -86,24 +56,18 @@ def process_search(p):
 
     tf_query = weight.compute_tf_query(bow_query)
 
-
-    # get tf, idf from prepare()
     # compute TF-IDF for both data and query
     represent_tfidf = weight.compute_weight(tf, idf, tf_query)
 
 
     # compute cosine similarity
-    cosi = list()
     k = len(represent_tfidf) - 1
     b = np.array(represent_tfidf[k])
     normb = np.linalg.norm(b)
-    ValueOfItem = []
     Get_data = []
-    #dem = 0
    
                 
     for i in range(0, k):
-        #dem = dem + 1
         a = np.array(represent_tfidf[i])
         dot = np.dot(a, b)
         norma = np.linalg.norm(a)
@@ -130,6 +94,7 @@ def process_search(p):
         result["item"].append(Get_data[i])
     result["item"].sort(key=sort_price, reverse=False)
     return result
+
   
 
 def find_id(id_product):

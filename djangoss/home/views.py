@@ -1,16 +1,26 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from . import process
+from . import fdis
 
 # Create your views here.
 def index(request):
     return render(request, 'pages/pages1.html')
 
+
 def process_data(request):
     x = request.POST.get("chuoi")
     kq = process.process_search(x)
-    return render(request,'pages/pages1.html',kq) 
+    return render(request,'pages/pages1.html',kq)
 
-def test(request, id_product):
+def fdistri(request):
+    kq = fdis.name_distributor()
+    return render(request, 'pages/pages4.html',kq)
+
+def fdistributor(request, distributor):
+    kq = fdis.find_distributor(distributor)
+    return render(request,'pages/pages3.html',kq)
+
+def find(request, id_product):
     kq = process.find_id(id_product)
     return render(request,'pages/pages2.html',kq) 

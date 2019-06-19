@@ -1,0 +1,32 @@
+{% extends "pages/base.html" %}
+{% load static %}
+{% block title %}Distributor{% endblock %}
+{% block style %}
+<link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" />
+{% endblock %}
+{% block content %}
+
+<div class="container">
+  <div class="row">
+      {% for distributor in item %}
+      <div class="col-md-3 mb-4" id="ttsp">
+              <div class="card shadow-sm">
+                      <a target="_blank"> 
+                              <img width="100%" height="250" src="{{distributor.image}}" alt="Tên sản phẩm">
+                      </a>
+              <br>
+              <div class="container">
+                  <a class="card-link text-body">
+                      <h5 data-toggle="tooltip" data-placement="bottom" [title]=data.ProductName class="card-title text-truncate">{{distributor.ProductName}}</h5>
+                  </a>
+                  <hr>
+                  <h5 style="color:#16a085;" class="text-right">
+                    {{distributor.Price}}
+                  </h5>
+              </div>
+              </div>
+      </div>
+      {% endfor %}
+</div>
+</div>
+{% endblock %}
