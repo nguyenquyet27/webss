@@ -85,7 +85,6 @@ def process_search(p):
                     "image":  data[i]["image"],
                     "link": data[i]["link"]
                 })
-    Get_data.sort(key=sort_price, reverse=False)
     Get_data.sort(key=sort_by_me, reverse=True)
     number = 10
     y = len(Get_data)
@@ -95,7 +94,10 @@ def process_search(p):
     result["item"].sort(key=sort_price, reverse=False)
     return result
 
-  
+def sort(p):
+    result = {"item": []}
+    result = process_search(p)
+    result["item"].sort(key=sort_price, reverse=False)
 
 def find_id(id_product):
     try:

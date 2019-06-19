@@ -47,3 +47,34 @@ def find_distributor(distributor):
     for i in range(0, y):
         result["item"].append(Get_data[i])
     return result
+
+
+def find_masp(masp):
+    try:
+        with open('home/datas.json') as json_dataset:
+            dataset = json.load(json_dataset)
+    except FileNotFoundError:
+        json_data = {"test": []}
+
+    data = []
+    for i in dataset:
+        data.append(dataset[i])
+    n = len(data)
+    Get_data = []
+    for i in range(0,n):
+        if (data[i]["masp"] == masp):
+            Get_data.append({
+                    "id":  data[i]["id"],
+                    "ProductName":  data[i]["ProductName"],
+                    "Price" : data[i]["Price"],
+                    "Company":  data[i]["Company"],
+                    "Distributor":  data[i]["Distributor"],
+                    "image":  data[i]["image"],
+                    "link": data[i]["link"]
+                })
+    
+    result = {"item": []}
+    y = len(Get_data)
+    for i in range(0, y):
+        result["item"].append(Get_data[i])
+    return result
