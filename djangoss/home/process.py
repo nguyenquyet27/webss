@@ -5,7 +5,8 @@ import json
 from collections import Counter
 
 q = []
-
+get = []
+gett = []
 def sort_by_me(a):
     return a["cost"]
 def sort_price(b):
@@ -87,6 +88,29 @@ def process_search(p):
                     "image":  data[i]["image"],
                     "link": data[i]["link"]
                 })
+                get.append({
+                    "cost": cos,
+                    "id":  data[i]["id"],
+                    "ProductName":  data[i]["ProductName"],
+                    "Price1":  chuyen(data[i]["Price"]),
+                    "Price" : data[i]["Price"],
+                    "Company":  data[i]["Company"],
+                    "Distributor":  data[i]["Distributor"],
+                    "image":  data[i]["image"],
+                    "link": data[i]["link"]
+                })
+                gett.append({
+                    "cost": cos,
+                    "id":  data[i]["id"],
+                    "ProductName":  data[i]["ProductName"],
+                    "Price1":  chuyen(data[i]["Price"]),
+                    "Price" : data[i]["Price"],
+                    "Company":  data[i]["Company"],
+                    "Distributor":  data[i]["Distributor"],
+                    "image":  data[i]["image"],
+                    "link": data[i]["link"]
+                })
+    
     Get_data.sort(key=sort_by_me, reverse=True)
     number = 10
     y = len(Get_data)
@@ -97,18 +121,22 @@ def process_search(p):
     return result
 
 def sort_belon():
-    n = len(q)
-    p = q[n-1]
+    y = len(get)
+    number = 10
     result = {"item": []}
-    result = process_search(p)
+    for i in range(0, min(number, y)):
+        result["item"].append(gett[i])
+    gett.clear()
     result["item"].sort(key=sort_price, reverse=False)
     return result
 
 def sort_lonbe():
-    n = len(q)
-    p = q[n-1]
+    y = len(get)
+    number = 10
     result = {"item": []}
-    result = process_search(p)
+    for i in range(0, min(number, y)):
+        result["item"].append(get[i])
+    get.clear()
     result["item"].sort(key=sort_price, reverse=True)
     return result
 
