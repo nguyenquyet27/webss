@@ -13,10 +13,9 @@ def process_data(request):
     kq = process.process_search(x)
     return render(request,'pages/pages1.html',kq)
 
-# def sort_price(request):
-    #x = request.POST.get("chuoi")
-    #kq = process.sort(x)
-    #return render(request,'pages/pages1.html',kq)
+def sort_price(request):
+    kq = process.sort()
+    return render(request,'pages/pages1.html',kq)
 #masp
 
 

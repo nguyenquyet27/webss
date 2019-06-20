@@ -4,6 +4,7 @@ from . import weight
 import json
 from collections import Counter
 
+q = []
 
 def sort_by_me(a):
     return a["cost"]
@@ -21,6 +22,7 @@ def chuyen(st):
     return int(x)
 
 def process_search(p):
+    q.append(p)
     query = ""
     for i in p:
         query = query + i
@@ -91,13 +93,16 @@ def process_search(p):
     result = {"item": []}
     for i in range(0, min(number, y)):
         result["item"].append(Get_data[i])
-    result["item"].sort(key=sort_price, reverse=False)
+    #result["item"].sort(key=sort_price, reverse=False)
     return result
 
-def sort(p):
+def sort():
+    n = len(q)
+    p = q[n-1]
     result = {"item": []}
     result = process_search(p)
     result["item"].sort(key=sort_price, reverse=False)
+    return result
 
 def find_id(id_product):
     try:

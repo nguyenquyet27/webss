@@ -4,6 +4,7 @@ from . import views
 urlpatterns = [
     path('', views.index),
     path('detail', views.process_data),
+    path('sort', views.sort_price),
     path('distributor', views.fdistri),
     path('mobile', views.fsp),
     path('tab', views.fsptab),
