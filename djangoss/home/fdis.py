@@ -11,9 +11,9 @@ def name_distributor():
             "dis": lis[i]
         })
     y = len(dis)
-    result = {"item": []}
+    result = {"it": []}
     for i in range(0, y):
-        result["item"].append(dis[i])
+        result["it"].append(dis[i])
     return result
     
 

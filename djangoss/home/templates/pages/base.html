@@ -18,13 +18,32 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 </head>
 <body>
-    <div class="bg-dark">
-        <a href="/">
-            <button class="btn btn-light m-3">
-                  HOME
-            </button>
-        </a>
-        <span class="text-light text-center">Tham khảo giá ngay tại websosanhgia.net</span>
+    <div class="container">
+        <div class="row">
+                <div class="col-xs-12 ">
+                  <nav>
+                    <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                      <a class="nav-item nav-link active" id="nav-home-tab"  href="/" role="tab" aria-controls="nav-home" aria-selected="true">Home</a>
+                      <a class="nav-item nav-link" id="nav-profile-tab"  href="/mobile" role="tab" aria-controls="nav-profile" aria-selected="false">Mobile</a>
+                      <a class="nav-item nav-link" id="nav-contact-tab" href="/tab" role="tab" aria-controls="nav-contact" aria-selected="false">Tablet</a>
+                      <a class="nav-item nav-link" id="nav-about-tab"  href="/laptop" role="tab" aria-controls="nav-about" aria-selected="false">Laptop</a>
+                    </div>
+                  </nav>
+                </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+    <div class="row">    
+            <div id="admin-sidebar" class="col-md-2 p-x-0 p-y-3">
+                <ul class="sidenav admin-sidenav list-unstyled">
+                    <li><a href="/thegioididong">Thế giới di động</a></li>
+                    <li><a href="/fptshop">FPT shop</a></li>
+                    <li><a href="hoanghamobile">Hoàng Hà mobile</a></li>
+                    <li><a href="vienthonga">Viễn Thông A</a></li>
+                    <li><a href="mainguyen">Mai Nguyên</a></li>                  
+                </ul>
+            </div>
+    </div>
     </div>
     {% block content %}
 
