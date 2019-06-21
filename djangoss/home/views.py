@@ -16,6 +16,11 @@ def process_data(request):
     return render(request, 'pages/search.html', kq)
 
 
+def process_datamore(request):
+    kq = process.process_searchmore()
+    return render(request, 'pages/search.html', kq)
+
+
 def sort_pricebl(request):
     kq = process.sort_belon()
     return render(request, 'pages/search.html', kq)
@@ -23,47 +28,6 @@ def sort_pricebl(request):
 
 def sort_pricelb(request):
     kq = process.sort_lonbe()
-    return render(request, 'pages/search.html', kq)
-
-#distributor
-#thegioididong
-
-
-def searchtgdd_dis(request):
-    distributor = "thegioididong"
-    kq = process.searchpp(distributor)
-    return render(request, 'pages/search.html', kq)
-
-#fptshop
-
-
-def searchfpt_dis(request):
-    distributor = "fptshop"
-    kq = process.searchpp(distributor)
-    return render(request, 'pages/search.html', kq)
-
-#hoanghamobile
-
-
-def searchhh_dis(request):
-    distributor = "hoanghamobile"
-    kq = process.searchpp(distributor)
-    return render(request, 'pages/search.html', kq)
-
-#vienthonga
-
-
-def searchvta_dis(request):
-    distributor = "vienthonga"
-    kq = process.searchpp(distributor)
-    return render(request, 'pages/search.html', kq)
-
-#mainguyen
-
-
-def searchmn_dis(request):
-    distributor = "mainguyen"
-    kq = process.searchpp(distributor)
     return render(request, 'pages/search.html', kq)
 
 
