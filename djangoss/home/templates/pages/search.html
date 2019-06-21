@@ -5,21 +5,6 @@
 <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" />
 {% endblock %}
 {% block content %}
-
-
-<div class="container-fluid">
-<div class="row">    
-        <div id="admin-sidebar" class="col-md-2 p-x-0 p-y-3">
-            <ul class="sidenav admin-sidenav list-unstyled">
-                <li><a href="/tgdd">Thế giới di động</a></li>
-                <li><a href="/fpt">FPT shop</a></li>
-                <li><a href="/hh">Hoàng Hà mobile</a></li>
-                <li><a href="/vta">Viễn Thông A</a></li>
-                <li><a href="/mn">Mai Nguyên</a></li>          
-            </ul>
-        </div>
-</div>
-</div>
 <div class="container">
         <div class="d-flex justify-content-center">
           <form action = "detail" method = "post">
@@ -34,12 +19,26 @@
             </div>
           </form>
         </div>
-      </div>
-  <br>
-      <button type="button" class="btn btn-primary"><a href = "/sortbl">Sortbl</a></button>
-      <button type="button" class="btn btn-primary"><a href = "/sortlb">Sortlb</a></button>
-  <br>
+    </div>
+<br>
+<br>
       <div class="container">
+        {% if search == 1 %}
+            {% if stt == 1 or stt == -1 %}
+            <form action='sortbl' method='GET'>
+                <button type="submit" class="btn btn-outline-info">
+                    Giá tăng dần ↑↓
+                </button>
+            </form>
+            {% else %}
+            <form action='sortlb' method='GET'>
+                <button type="submit" class="btn btn-outline-info">
+                    Giá giảm dần ↑↓
+                </button>
+            </form>
+            {% endif %}
+        {% endif %}
+        <br>
           <div class="row">
               {% for detail in item %}
               <div class="col-md-3 mb-4" id="ttsp">
