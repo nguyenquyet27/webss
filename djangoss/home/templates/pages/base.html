@@ -9,7 +9,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa:500&display=swap&subset=vietnamese" rel="stylesheet">
     <script type="text/JavaScript"
         src="https://raw.githubusercontent.com/javve/list.js/v1.5.0/dist/list.min.js"></script>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -22,7 +22,7 @@
 </head>
 
 <body>
-    <div style="background: rgb(0, 0, 0);">
+    <div style="background: rgb(0, 0, 0); position: sticky;">
         <a href="/">
             <button class="btn btn-light btn-lg m-3">
                 HOME
@@ -30,9 +30,11 @@
         </a>
         <span class="text-light text-center">Tham khảo giá ngay tại websosanhgia.net</span>
     </div>
+    <div class="margin"></div>
     {% block content %}
 
     {% endblock %}
+    <div class="margin"></div>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>

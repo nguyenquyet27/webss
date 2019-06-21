@@ -4,6 +4,11 @@ html {
     width: 100%;
     margin: 0;
     padding: 0;
+    font-family: 'Comfortaa', cursive;
+}
+
+.margin {
+    height: 1em;
 }
 
 .searchbar {
@@ -12,7 +17,7 @@ html {
     background: rgb(0, 0, 0);
     border-radius: 30px;
     padding: 10px;
-    box-shadow: #e74c3c;
+    box-shadow: 5px 2px 5px rgb(196, 196, 196);
 }
 
 .search_input {
@@ -23,6 +28,10 @@ html {
     width: 0;
     line-height: 40px;
     transition: width 0.4s linear;
+}
+
+.searchbar:hover {
+    box-shadow: 10px 5px 5px rgb(196, 196, 196);
 }
 
 .searchbar:hover>.search_input {
@@ -45,4 +54,8 @@ html {
     align-items: center;
     border-radius: 50%;
     color: white;
+}
+
+.product_image{
+    padding: 1em;
 }
