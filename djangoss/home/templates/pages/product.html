@@ -3,34 +3,34 @@
 {% block title %}{{ProductName}}{% endblock %}
 
 {% block content %}
-<div class="container mt-5">  
-        <div class="row">
-          <div class="col-md-4 d-flex">
-            <img width="100%" height="100%" src={{image}}>
-          </div>
-          <div class="col-md-8">
-              <table class="table">
-                  <tbody>
-                    <tr>
-                      <th scope="row">Tên sản phẩm</th>
-                      <td><a href = {{link}} target="_blank">{{ProductName}}</a></td>
-                    </tr>
-                    <tr>
-                      <th scope="row">Nhà sản xuất</th>
-                      <td>{{Company}}</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">Nhà phân phối</th>
-                      <td>{{Distributor}}</td>
-                    </tr>
-                    </a>
-                    <tr>
-                      <th scope="row">Giá sản phẩm</th>
-                      <td class="text-primary">{{Price}}</td>
-                    </tr>
-                  </tbody>
-                </table>
-          </div>
-        </div>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-4 d-flex">
+      <img width="100%" height="100%" src={{image}}>
     </div>
+    <div class="col-md-8">
+      <table class="table">
+        <tbody>
+          <tr>
+            <th scope="row">Tên sản phẩm</th>
+            <td><a href={{link}} target="_blank">{{ProductName}}</a></td>
+          </tr>
+          <tr>
+            <th scope="row">Nhà sản xuất</th>
+            <td>{{Company}}</td>
+          </tr>
+          <tr>
+            <th scope="row">Nhà phân phối</th>
+            <td>{{Distributor}}</td>
+          </tr>
+          </a>
+          <tr>
+            <th scope="row">Giá sản phẩm</th>
+            <td class="text-primary">{{Price}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 {% endblock %}

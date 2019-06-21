@@ -6,59 +6,71 @@
 {% endblock %}
 {% block content %}
 <div class="container">
-        <div class="d-flex justify-content-center">
-          <form action = "detail" method = "post">
-          
+    <div class="d-flex justify-content-center">
+        <form action="detail" method="post">
+
             {% csrf_token %}
-       
+
             <div class="searchbar">
-                  <input class="search_input" type="text" name = "chuoi"  placeholder="Search...">
-                  <div class="search_icon">
-                      <i class="fas fa-search"></i>
-                  </div>
+                <input class="search_input" type="text" name="chuoi" placeholder="Search...">
+                <div class="search_icon">
+                    <i class="fas fa-search"></i>
+                </div>
             </div>
-          </form>
-        </div>
+        </form>
     </div>
+</div>
 <br>
 <br>
-      <div class="container">
-        {% if search == 1 %}
-            {% if stt == 1 or stt == -1 %}
-            <form action='sortbl' method='GET'>
-                <button type="submit" class="btn btn-outline-info">
-                    Giá tăng dần ↑↓
-                </button>
-            </form>
-            {% else %}
-            <form action='sortlb' method='GET'>
-                <button type="submit" class="btn btn-outline-info">
-                    Giá giảm dần ↑↓
-                </button>
-            </form>
-            {% endif %}
+<div class="container">
+    {% if search == 1 %}
+    {% if stt == 1 or stt == -1 %}
+    <form action='sortbl' method='GET'>
+        <button type="submit" class="btn btn-outline-dark">
+            Giá tăng dần ↑↓
+        </button>
+    </form>
+
+    {% else %}
+    <form action='sortlb' method='GET'>
+        <button type="submit" class="btn btn-outline-dark">
+            Giá giảm dần ↑↓
+        </button>
+    </form>
+    {% endif %}
+
+    {% endif %}
+    <br>
+    <div class="row">
+        {% for detail in item %}
+        <div class="col-md-3 mb-5" id="ttsp">
+            <div class="card shadow-sm">
+                <a href="{{detail.id}}" target="_blank">
+                    <img class="product_image" width="100%" height="250" src="{{detail.image}}" alt="Tên sản phẩm">
+                </a>
+                <br>
+                <div class="container">
+                    <a href="{{detail.id}}" class="card-link text-body" target="_blank">
+                        <h5 data-toggle="tooltip" data-placement="bottom" title="{{detail.ProductName}}"
+                            class="card-title text-truncate">{{detail.ProductName}}</h5>
+                    </a>
+                    <hr>
+                    <h5 style="color:#16a085;" class="text-right">
+                        {{detail.Price}}
+                    </h5>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+        {% if more == 1 %}
+        <form action='showmore' method='GET'>
+            <button type="submit" class="btn btn-outline-dark"">
+                Showmore
+            </button>
+        </form>
         {% endif %}
-        <br>
-          <div class="row">
-              {% for detail in item %}
-              <div class="col-md-3 mb-4" id="ttsp">
-                      <div class="card shadow-sm" >
-                              <a href="{{detail.id}}" target="_blank"> 
-                                      <img width="100%" height="250" src="{{detail.image}}" alt="Tên sản phẩm">
-                              </a>
-                      <br>
-                      <div class="container">
-                          <a href="{{detail.id}}" class="card-link text-body" target="_blank">
-                              <h5 data-toggle="tooltip" data-placement="bottom" title ={{detail.ProductName}} class="card-title text-truncate">{{detail.ProductName}}</h5>
-                          </a>
-                          <hr>
-                          <h5 style="color:#16a085;" class="text-right">
-                            {{detail.Price}}
-                          </h5>
-                      </div>
-                      </div>
-              </div>
-              {% endfor %}
-        </div>
+
     </div>
+</div>
 {% endblock %}
