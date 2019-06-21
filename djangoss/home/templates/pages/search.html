@@ -42,14 +42,14 @@
           <div class="row">
               {% for detail in item %}
               <div class="col-md-3 mb-4" id="ttsp">
-                      <div class="card shadow-sm">
+                      <div class="card shadow-sm" >
                               <a href="{{detail.id}}" target="_blank"> 
                                       <img width="100%" height="250" src="{{detail.image}}" alt="Tên sản phẩm">
                               </a>
                       <br>
                       <div class="container">
-                          <a href="{{detail.id}}" class="card-link text-body">
-                              <h5 data-toggle="tooltip" data-placement="bottom" [title]=data.ProductName class="card-title text-truncate">{{detail.ProductName}}</h5>
+                          <a href="{{detail.id}}" class="card-link text-body" target="_blank">
+                              <h5 data-toggle="tooltip" data-placement="bottom" title ={{detail.ProductName}} class="card-title text-truncate">{{detail.ProductName}}</h5>
                           </a>
                           <hr>
                           <h5 style="color:#16a085;" class="text-right">
