@@ -7,20 +7,26 @@ from collections import Counter
 q = []
 search = 0
 stt = -1
+
+
 def sort_by_me(a):
     return a["cost"]
+
+
 def sort_price(b):
     return b["Price1"]
+
 
 def chuyen(st):
     xnew = st.split()[0]
     if (xnew == 'Unknow'):
         return 0
     x = ""
-    for i in range(0,len(xnew)):
-        if xnew[i] !='.':
-            x =x +  xnew[i]
+    for i in range(0, len(xnew)):
+        if xnew[i] != '.':
+            x = x + xnew[i]
     return int(x)
+
 
 def process_search(p):
     q.append(p)
@@ -32,6 +38,7 @@ def process_search(p):
             dataset = json.load(json_dataset)
     except FileNotFoundError:
         json_data = {"test": []}
+
     data = []
     for i in dataset:
         data.append(dataset[i])
@@ -42,26 +49,22 @@ def process_search(p):
 
     corpus = list()
     for name in ProductName:
-        terms = tokenizing.get_terms(name, lemmatize=False, stemming=False)
-        bow = Counter(terms)
-        corpus.append(bow)
-
+        terms = tokenizing.get_terms(name)
+        # bow = Counter(terms)
+        corpus.append(terms)
 
     # compute tf, idf of data
     tf = weight.compute_tf(corpus)
-    idf = weight.compute_idf(corpus) 
-
+    idf = weight.compute_idf(corpus)
 
     # handling query
-    query_ = tokenizing.get_terms(query, lemmatize=False, stemming=False)
-    bow_query = Counter(query_)
-    query_len = len(bow_query)
+    query = tokenizing.get_terms(query)
+    query_len = len(query)
 
-    tf_query = weight.compute_tf_query(bow_query)
+    tf_query = weight.compute_tf([query])
 
     # compute TF-IDF for both data and query
     represent_tfidf = weight.compute_weight(tf, idf, tf_query)
-
 
     # compute cosine similarity
     k = len(represent_tfidf) - 1
@@ -69,7 +72,7 @@ def process_search(p):
     normb = np.linalg.norm(b)
     Get_data = []
     search = 1
-                
+
     for i in range(0, k):
         a = np.array(represent_tfidf[i])
         dot = np.dot(a, b)
@@ -82,7 +85,7 @@ def process_search(p):
                     "id":  data[i]["id"],
                     "ProductName":  data[i]["ProductName"],
                     "Price1":  chuyen(data[i]["Price"]),
-                    "Price" : data[i]["Price"],
+                    "Price": data[i]["Price"],
                     "Company":  data[i]["Company"],
                     "Distributor":  data[i]["Distributor"],
                     "image":  data[i]["image"],
@@ -91,11 +94,12 @@ def process_search(p):
     Get_data.sort(key=sort_by_me, reverse=True)
     number = 10
     y = len(Get_data)
-    result = {"item": [] ,"search" : search, "stt" : stt }
+    result = {"item": [], "search": search, "stt": stt}
     for i in range(0, min(number, y)):
         result["item"].append(Get_data[i])
     #result["item"].sort(key=sort_price, reverse=False)
     return result
+
 
 def sort_belon():
     n = len(q)
@@ -105,6 +109,7 @@ def sort_belon():
     result["stt"] = 0
     result["item"].sort(key=sort_price, reverse=False)
     return result
+
 
 def sort_lonbe():
     n = len(q)
@@ -116,6 +121,8 @@ def sort_lonbe():
     return result
 
 #distributor
+
+
 def find_id(id_product):
     try:
         with open('home/datas.json') as json_dataset:

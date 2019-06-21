@@ -1,4 +1,3 @@
-from nltk.stem import LancasterStemmer, WordNetLemmatizer
 from nltk.corpus import stopwords
 import re
 import contractions
@@ -51,49 +50,7 @@ def remove_stopwords(words):
     return new_words
 
 
-"""
-    stem words in list of tokenized words
-"""
-
-
-def stem_words(words):
-    stemmer = LancasterStemmer()
-    stems = []
-    for word in words:
-        stem = stemmer.stem(word)
-        stems.append(stem)
-    return stems
-
-
-"""
-    lemmatize verbs in list of tokenized words
-"""
-
-
-def lemmatize_verbs(words):
-    lemmatizer = WordNetLemmatizer()
-    lemmas = []
-    for word in words:
-        lemma = lemmatizer.lemmatize(word, pos='v')
-        lemmas.append(lemma)
-    return lemmas
-
-
-def preprocessing(terms, remove_non_ACSII=True, replace_num=True, lemmatize=True, stemming=True):
-    if remove_non_ACSII:
-        terms = remove_non_ascii(terms)
-    if replace_num:
-        terms = replace_numbers(terms)
-    terms = remove_stopwords(terms)
-    if lemmatize:
-        terms = lemmatize_verbs(terms)
-    if stemming:
-        terms = stem_words(terms)
-
-    return terms
-
-
-def get_terms(text, expand_contraction=True, remove_punc=True, remove_digit=False, remove_non_ACSII=True, replace_num=False, lemmatize=True, stemming=True):
+def get_terms(text, expand_contraction=True, remove_punc=True, remove_digit=False, remove_non_ACSII=True):
     """ convert all characters to lowercase in string of text"""
 
     text = text.lower()
@@ -107,6 +64,9 @@ def get_terms(text, expand_contraction=True, remove_punc=True, remove_digit=Fals
         text = remove_punctuation(text, remove_digit=remove_digit)
 
     terms = nltk.word_tokenize(text)
-    terms = preprocessing(terms, remove_non_ACSII=remove_non_ACSII,
-                          replace_num=replace_num, lemmatize=lemmatize, stemming=stemming)
+
+    if remove_non_ACSII:
+        terms = remove_non_ascii(terms)
+    terms = remove_stopwords(terms)
+
     return terms
