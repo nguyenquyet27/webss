@@ -23,6 +23,7 @@
 <br>
 <br>
 <div class="container">
+    {% if page == 1 %}
     {% if search == 1 %}
     {% if stt == 1 or stt == -1 %}
     <form action='sortbl' method='GET'>
@@ -38,7 +39,25 @@
         </button>
     </form>
     {% endif %}
+    {% endif %}
+    {% endif %}
+    {% if page == 2 %}
+    {% if search == 1 %}
+    {% if stt == 1 or stt == -1 %}
+    <form action='sortbl2' method='GET'>
+        <button type="submit" class="btn btn-outline-dark">
+            Giá tăng dần ↑↓
+        </button>
+    </form>
 
+    {% else %}
+    <form action='sortlb2' method='GET'>
+        <button type="submit" class="btn btn-outline-dark">
+            Giá giảm dần ↑↓
+        </button>
+    </form>
+    {% endif %}
+    {% endif %}
     {% endif %}
     <br>
     <div class="row">
@@ -64,9 +83,14 @@
         {% endfor %}
 
         {% if more == 1 %}
-        <form action='showmore' method='GET'>
-            <button type="submit" class="btn btn-outline-dark"">
-                Showmore
+        <form action='page1' method='GET'>
+            <button type="submit" class="btn btn-outline-dark">
+                Page 1
+            </button>
+        </form>
+        <form action='page2' method='GET'>
+            <button type="submit" class="btn btn-outline-dark">
+                Page 2
             </button>
         </form>
         {% endif %}

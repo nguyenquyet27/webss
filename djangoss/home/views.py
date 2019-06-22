@@ -15,12 +15,16 @@ def process_data(request):
     kq = process.process_search(x)
     return render(request, 'pages/search.html', kq)
 
-
-def process_datamore(request):
-    kq = process.process_searchmore()
+def process_datapage1(request):
+    kq = process.process_searchpage1()
     return render(request, 'pages/search.html', kq)
 
 
+def process_datapage2(request):
+    kq = process.process_searchpage2()
+    return render(request, 'pages/search.html', kq)
+
+#page1
 def sort_pricebl(request):
     kq = process.sort_belon()
     return render(request, 'pages/search.html', kq)
@@ -28,6 +32,15 @@ def sort_pricebl(request):
 
 def sort_pricelb(request):
     kq = process.sort_lonbe()
+    return render(request, 'pages/search.html', kq)
+#page2
+def sort_pricebl2(request):
+    kq = process.sort_belon2()
+    return render(request, 'pages/search.html', kq)
+
+
+def sort_pricelb2(request):
+    kq = process.sort_lonbe2()
     return render(request, 'pages/search.html', kq)
 
 
