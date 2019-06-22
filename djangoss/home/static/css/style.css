@@ -56,6 +56,17 @@ html {
     color: white;
 }
 
-.product_image{
+.product_image {
     padding: 1em;
+}
+
+.more {
+    width: 100%;
+    position: relative;
+}
+
+.showmore {
+    display: inline-block;
+    position: relative;
+    left: 47%;
 }

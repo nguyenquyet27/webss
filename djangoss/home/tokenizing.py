@@ -42,12 +42,12 @@ def remove_non_ascii(words):
 """
 
 
-def remove_stopwords(words):
-    new_words = []
-    for word in words:
-        if word not in stopwords.words('english'):
-            new_words.append(word)
-    return new_words
+# def remove_stopwords(words):
+#     new_words = []
+#     for word in words:
+#         if word not in stopwords.words('english'):
+#             new_words.append(word)
+#     return new_words
 
 
 def get_terms(text, expand_contraction=True, remove_punc=True, remove_digit=False, remove_non_ACSII=True):
@@ -67,6 +67,6 @@ def get_terms(text, expand_contraction=True, remove_punc=True, remove_digit=Fals
 
     if remove_non_ACSII:
         terms = remove_non_ascii(terms)
-    terms = remove_stopwords(terms)
+    # terms = remove_stopwords(terms)
 
     return terms
