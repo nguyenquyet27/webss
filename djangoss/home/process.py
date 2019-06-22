@@ -80,7 +80,7 @@ def process_search(p):
         norma = np.linalg.norm(a)
         if (norma != 0):
             cos = dot / (norma * normb)
-            if ((query_len == 1 and cos > 0) or (query_len > 1 and cos > 0.3)):
+            if ((query_len == 1 and cos > 0.2) or (query_len > 1 and cos > 0.4)):
                 Get_data.append({
                     "cost": cos,
                     "id":  data[i]["id"],
@@ -158,7 +158,7 @@ def process_searchpage1():
         norma = np.linalg.norm(a)
         if (norma != 0):
             cos = dot / (norma * normb)
-            if ((query_len == 1 and cos > 0) or (query_len > 1 and cos > 0.3)):
+            if ((query_len == 1 and cos > 0.2) or (query_len > 1 and cos > 0.4)):
                 Get_data.append({
                     "cost": cos,
                     "id":  data[i]["id"],
@@ -236,7 +236,7 @@ def process_searchpage2():
         norma = np.linalg.norm(a)
         if (norma != 0):
             cos = dot / (norma * normb)
-            if ((query_len == 1 and cos > 0) or (query_len > 1 and cos > 0.3)):
+            if ((query_len == 1 and cos > 0.2) or (query_len > 1 and cos > 0.4)):
                 Get_data.append({
                     "cost": cos,
                     "id":  data[i]["id"],
